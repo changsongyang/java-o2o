@@ -8,6 +8,13 @@ public class EasyUITreeRusult {
 	
 	private String state;
 
+	public EasyUITreeRusult(long id, String text, String state) {
+		super();
+		this.id = id;
+		this.text = text;
+		this.state = state;
+	}
+
 	public long getId() {
 		return id;
 	}

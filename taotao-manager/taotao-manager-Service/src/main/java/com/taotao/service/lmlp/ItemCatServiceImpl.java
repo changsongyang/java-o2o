@@ -26,17 +26,15 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 		Criteria createCriteria = example.createCriteria();
 
-		createCriteria.andIdGreaterThanOrEqualTo(parentId);
+		createCriteria.andParentIdEqualTo(parentId);
 
 		List<TbItemCat> list = ibItemCatMapper.selectByExample(example);
 
 		List<EasyUITreeRusult> rusult = new ArrayList<>();
 
 		for (TbItemCat tbItemCat : list) {
-			EasyUITreeRusult node = new EasyUITreeRusult();
-			node.setId(tbItemCat.getId());
-			node.setText(tbItemCat.getName());
-			node.setState(tbItemCat.getIsParent() ? "closed" : "open");
+			EasyUITreeRusult node = new EasyUITreeRusult(tbItemCat.getId(), tbItemCat.getName(), 
+					tbItemCat.getIsParent()?"closed":"open");
 			rusult.add(node);
 		}
 		return rusult;
