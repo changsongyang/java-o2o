@@ -21,7 +21,7 @@ public class KindEditorResult {
 	
 	//失败
 	public static KindEditorResult error(){
-		return new KindEditorResult(1, null, "上传失败");
+		return new KindEditorResult(1, null, "图片上传失败");
 	}
 	
 	public int getError() {
