@@ -18,7 +18,6 @@ public class KindEditoController {
 	@RequestMapping("/pic/upload")
 	@ResponseBody
 	public String uploadFile(MultipartFile uploadFile){
-		System.out.println(uploadFile);
 		KindEditorResult resule = kindEditorService.uploadPic(uploadFile);
 		return JsonUtils.objectToJson(resule);
 	}
