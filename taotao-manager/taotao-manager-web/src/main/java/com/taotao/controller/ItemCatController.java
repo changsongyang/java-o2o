@@ -13,12 +13,13 @@ import com.taotao.commom.pojo.EasyUITreeRusult;
 import com.taotao.service.ItemCatService;
 
 @Controller
+@RequestMapping("/item/cat")
 public class ItemCatController {
 	
 	@Autowired
 	ItemCatService itemCatService;
 	
-	@RequestMapping(value="/item/cat/list",method=RequestMethod.POST)
+	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public List<EasyUITreeRusult> getItemCatList(@RequestParam(value="id",defaultValue="0")Long parentId){
 		List<EasyUITreeRusult> itemCat = itemCatService.getItemCat(parentId);
