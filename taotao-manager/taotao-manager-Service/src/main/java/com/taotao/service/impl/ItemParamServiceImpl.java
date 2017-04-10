@@ -52,7 +52,7 @@ public class ItemParamServiceImpl implements ItemParamService {
 		
 		createCriteria.andItemCatIdEqualTo(cid);
 		
-		List<TbItemParam> list = itemParamMapper.selectByExample(example);
+		List<TbItemParam> list = itemParamMapper.selectByExampleWithBLOBs(example);
 		
 		if(list != null && list.size() > 0){
 			return TaotaoResult.ok(list);

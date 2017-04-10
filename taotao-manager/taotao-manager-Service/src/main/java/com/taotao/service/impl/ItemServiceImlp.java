@@ -13,9 +13,11 @@ import com.taotao.common.utils.IDUtils;
 import com.taotao.common.utils.TaotaoResult;
 import com.taotao.mapper.TbItemDescMapper;
 import com.taotao.mapper.TbItemMapper;
+import com.taotao.mapper.TbItemParamItemMapper;
 import com.taotao.po.TbItem;
 import com.taotao.po.TbItemDesc;
 import com.taotao.po.TbItemExample;
+import com.taotao.po.TbItemParamItem;
 import com.taotao.service.ItemService;
 
 @Service
@@ -26,6 +28,9 @@ public class ItemServiceImlp implements ItemService {
 	
 	@Autowired
 	TbItemDescMapper tbItemDescMapper; 
+	
+	@Autowired
+	TbItemParamItemMapper tbItemParamItemMapper;
 
 	@Override
 	public EasyUIDataGridResult getItemList(int page, int rows) {
@@ -49,7 +54,7 @@ public class ItemServiceImlp implements ItemService {
 	}
 
 	@Override
-	public TaotaoResult createItem(TbItem item, String desc) {
+	public TaotaoResult createItem(TbItem item, String desc,String itemParams) {
 		
 		Long itemId = IDUtils.genItemId();
 				
@@ -76,6 +81,19 @@ public class ItemServiceImlp implements ItemService {
 		
 		//添加商品描述
 		tbItemDescMapper.insert(itemDesc);
+		
+		TbItemParamItem tbItemParamItem = new TbItemParamItem();
+		
+		tbItemParamItem.setItemId(itemId);
+		
+		tbItemParamItem.setParamData(itemParams);
+		
+		tbItemParamItem.setCreated(new Date());
+	
+		tbItemParamItem.setUpdated(new Date());
+		
+		//添加商品描述
+		tbItemParamItemMapper.insert(tbItemParamItem);
 		
 		return TaotaoResult.ok();
 	}
