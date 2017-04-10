@@ -20,7 +20,7 @@ public class itemController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public EasyUIDataGridResult getItemList(int page, int rows){
-		EasyUIDataGridResult result = itemService.getItemLise(page, rows);
+		EasyUIDataGridResult result = itemService.getItemList(page, rows);
 		return result;
 	}
 	

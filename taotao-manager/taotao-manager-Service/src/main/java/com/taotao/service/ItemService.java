@@ -6,7 +6,7 @@ import com.taotao.po.TbItem;
 
 public interface ItemService {
 	
-	EasyUIDataGridResult getItemLise(int page, int rows); 
+	EasyUIDataGridResult getItemList(int page, int rows); 
 	
 	TaotaoResult createItem(TbItem item,String desc);
 }

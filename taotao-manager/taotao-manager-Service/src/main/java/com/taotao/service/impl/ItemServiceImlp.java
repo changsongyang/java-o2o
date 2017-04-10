@@ -28,7 +28,7 @@ public class ItemServiceImlp implements ItemService {
 	TbItemDescMapper tbItemDescMapper; 
 
 	@Override
-	public EasyUIDataGridResult getItemLise(int page, int rows) {
+	public EasyUIDataGridResult getItemList(int page, int rows) {
 		
 		//设置分页
 		PageHelper.startPage(page, rows);
