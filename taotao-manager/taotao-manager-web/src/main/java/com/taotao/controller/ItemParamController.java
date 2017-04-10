@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotao.commom.pojo.EasyUIDataGridResult;
@@ -35,6 +37,13 @@ public class ItemParamController {
 	@ResponseBody
 	public TaotaoResult save(@PathVariable Long cid,String paramData){
 		TaotaoResult result = itemParamService.insertItemParam(cid, paramData);
+		return result;
+	}
+	
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult delete(@RequestParam Long ids){
+		TaotaoResult result = itemParamService.deleteItemParam(ids);
 		return result;
 	}
 

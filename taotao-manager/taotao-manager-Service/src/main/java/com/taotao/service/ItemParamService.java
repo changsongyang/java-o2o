@@ -11,4 +11,6 @@ public interface ItemParamService {
 	
 	TaotaoResult insertItemParam(Long cid,String ParamData);
 	
+	TaotaoResult deleteItemParam(Long ids);
+	
 }

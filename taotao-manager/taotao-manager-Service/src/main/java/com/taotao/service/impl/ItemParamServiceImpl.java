@@ -87,4 +87,10 @@ public class ItemParamServiceImpl implements ItemParamService {
 		return TaotaoResult.ok();
 	}
 
+	@Override
+	public TaotaoResult deleteItemParam(Long ids) {
+		itemParamMapper.deleteByPrimaryKey(ids);
+		return TaotaoResult.ok();
+	}
+
 }
