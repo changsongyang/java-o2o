@@ -17,7 +17,7 @@ import com.taotao.service.ItemCatService;
 public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
-	TbItemCatMapper ibItemCatMapper;
+	TbItemCatMapper tbItemCatMapper;
 
 	@Override
 	public List<EasyUITreeRusult> getItemCat(long parentId) {
@@ -28,7 +28,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 		createCriteria.andParentIdEqualTo(parentId);
 
-		List<TbItemCat> list = ibItemCatMapper.selectByExample(example);
+		List<TbItemCat> list = tbItemCatMapper.selectByExample(example);
 
 		List<EasyUITreeRusult> rusult = new ArrayList<>();
 
