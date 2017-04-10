@@ -19,7 +19,16 @@ import com.taotao.po.TbItemDesc;
 import com.taotao.po.TbItemExample;
 import com.taotao.po.TbItemParamItem;
 import com.taotao.service.ItemService;
-
+/**
+ * 商品列表
+ * 新增商品列表
+ * 编辑商品列表
+ * 删除商品列表
+ * 商品上架
+ * 商品下架
+ * @author hulei
+ *
+ */
 @Service
 public class ItemServiceImlp implements ItemService {
 	
@@ -92,7 +101,7 @@ public class ItemServiceImlp implements ItemService {
 	
 		tbItemParamItem.setUpdated(new Date());
 		
-		//添加商品描述
+		//添加商品规格
 		tbItemParamItemMapper.insert(tbItemParamItem);
 		
 		return TaotaoResult.ok();

@@ -12,7 +12,11 @@ import com.taotao.po.TbItemCat;
 import com.taotao.po.TbItemCatExample;
 import com.taotao.po.TbItemCatExample.Criteria;
 import com.taotao.service.ItemCatService;
-
+/**
+ * 异步tree
+ * @author hulei
+ *
+ */
 @Service
 public class ItemCatServiceImpl implements ItemCatService {
 

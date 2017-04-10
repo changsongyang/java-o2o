@@ -7,7 +7,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.taotao.commom.pojo.KindEditorResult;
 import com.taotao.common.utils.FastDFSClient;
 import com.taotao.service.KindEditorService;
-
+/**
+ * 图片上传
+ * @author hulei
+ *
+ */
 @Service
 public class KindEditorServiceImpl implements KindEditorService {
 	

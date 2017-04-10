@@ -15,7 +15,14 @@ import com.taotao.po.TbItemParam;
 import com.taotao.po.TbItemParamExample;
 import com.taotao.po.TbItemParamExample.Criteria;
 import com.taotao.service.ItemParamService;
-
+/**
+ * 规格参数列表
+ * 新增规格参数
+ * 编辑规格参数
+ * 删除规格参数
+ * @author hulei
+ *
+ */
 @Service
 public class ItemParamServiceImpl implements ItemParamService {
 
