@@ -1,5 +1,6 @@
 package com.taotao.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,11 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.commom.pojo.EasyUIDataGridResult;
+import com.taotao.common.utils.TaotaoResult;
 import com.taotao.mapper.TbItemParamMapper;
 import com.taotao.po.TbItemParam;
 import com.taotao.po.TbItemParamExample;
+import com.taotao.po.TbItemParamExample.Criteria;
 import com.taotao.service.ItemParamService;
 
 @Service
@@ -38,6 +41,43 @@ public class ItemParamServiceImpl implements ItemParamService {
 		result.setRows(list);
 
 		return result;
+	}
+
+	@Override
+	public TaotaoResult getItemParamById(Long cid) {
+		
+		TbItemParamExample example = new TbItemParamExample();
+		
+		Criteria createCriteria = example.createCriteria();
+		
+		createCriteria.andItemCatIdEqualTo(cid);
+		
+		List<TbItemParam> list = itemParamMapper.selectByExample(example);
+		
+		if(list != null && list.size() > 0){
+			return TaotaoResult.ok(list);
+		}
+		
+		return TaotaoResult.ok();
+		
+	}
+
+	@Override
+	public TaotaoResult insertItemParam(Long cid, String ParamData) {
+		
+		TbItemParam result = new TbItemParam();
+		
+		result.setItemCatId(cid);
+		
+		result.setParamData(ParamData);
+		
+		result.setCreated(new Date());
+		
+		result.setUpdated(new Date());
+		
+		itemParamMapper.insert(result);
+		
+		return TaotaoResult.ok();
 	}
 
 }
