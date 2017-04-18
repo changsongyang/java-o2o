@@ -39,5 +39,12 @@ public class ContentCategoryController {
 		TaotaoResult result = categoryService.updateContentCategory(id, name);
 		return result;
 	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public TaotaoResult delete(Long id){
+		TaotaoResult result = categoryService.deleteContentCategory(id);
+		return result;
+	}
 
 }
