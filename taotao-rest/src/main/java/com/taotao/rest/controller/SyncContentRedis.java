@@ -20,10 +20,8 @@ public class SyncContentRedis {
 	@RequestMapping(value="/sync/content",method= RequestMethod.POST)
 	@ResponseBody
 	public TaotaoResult sysncContent(@RequestParam Long cid){
-		System.out.println(cid);
 		try {
 			TaotaoResult result = synccontentService.syncContent(cid);
-			System.out.println("del");
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

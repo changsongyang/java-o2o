@@ -40,7 +40,6 @@ public class ContentServiceImpl implements ContentService {
 			String hget = jedisClient.hget(REDIS_CONTENT_KEY, categoryId + "");
 			if(!StringUtils.isBlank(hget)){
 				List<TbContent> list = JsonUtils.jsonToList(hget, TbContent.class);
-				System.out.println("redis");
 				return TaotaoResult.ok(list);
 			}
 		} catch (Exception e) {
@@ -64,7 +63,6 @@ public class ContentServiceImpl implements ContentService {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		System.out.println("list");
 		return TaotaoResult.ok(list);
 	}
 
