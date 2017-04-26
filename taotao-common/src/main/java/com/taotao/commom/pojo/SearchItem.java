@@ -1,17 +1,17 @@
 package com.taotao.commom.pojo;
 
 public class SearchItem {
-	private long id;
+	private String id;
 	private String title;
 	private String sell_point;
 	private long price;
 	private String image;
 	private String item_cat_name;
 	private String item_desc;
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {

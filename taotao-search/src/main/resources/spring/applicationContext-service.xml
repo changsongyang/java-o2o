@@ -9,9 +9,9 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 		<!-- 配置包扫描器，扫描@Service主键的类 -->
-	<context:component-scan base-package="com.taotao.search.service"/>
+	<context:component-scan base-package="com.taotao.search.service,com.taotao.search.dao"/>
 	<!-- solr单机配置 -->
 	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-		<constructor-arg name="baseURL" value="http://192.168.34.217:8080/sorl"></constructor-arg>
+		<constructor-arg name="baseURL" value="http://192.168.34.32:8080/sorl"></constructor-arg>
 	</bean>
 </beans>
