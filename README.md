@@ -1,7 +1,7 @@
 # java-ssm
 java 电商系统(开发中) 
 # maven 模块管理
-parent
+parent<br>
 |——manager
 |——manager-dao
      |——manager-pojo
