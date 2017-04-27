@@ -2,7 +2,7 @@
 java 电商系统(开发中) 
 # maven 模块管理
 parent<br>
-&nbsb|——manager<br>
+&nbsp|——manager<br>
 |——manager-dao<br>
 |——manager-pojo<br>
 |——manager-service<br>
