@@ -2,8 +2,9 @@ package com.taotao.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotao.common.utils.ExceptionUtil;
@@ -20,9 +21,9 @@ public class ItemController {
 	@Autowired
 	ItemService itemService;
 	
-	@RequestMapping("/{itemId}")
+	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
-	public TaotaoResult getItemId(@PathVariable Long itemId){
+	public TaotaoResult getItemId(@RequestParam Long itemId){
 		try {
 			TbItem result = itemService.getItemById(itemId);
 			return TaotaoResult.ok(result);
@@ -33,9 +34,9 @@ public class ItemController {
 		
 	}
 	
-	@RequestMapping("/desc/{itemId}")
+	@RequestMapping(value="/desc",method=RequestMethod.POST)
 	@ResponseBody
-	public TaotaoResult getItemDesc(@PathVariable Long itemId){
+	public TaotaoResult getItemDesc(@RequestParam Long itemId){
 		try {
 			TbItemDesc result = itemService.getItemDesc(itemId);
 			return TaotaoResult.ok(result);
@@ -47,9 +48,9 @@ public class ItemController {
 	}
 	
 
-	@RequestMapping("/sprc/{itemId}")
+	@RequestMapping(value="/sprc",method=RequestMethod.POST)
 	@ResponseBody
-	public TaotaoResult getItemSprc(@PathVariable Long itemId){
+	public TaotaoResult getItemSprc(@RequestParam Long itemId){
 		try {
 			TbItemParamItem result = itemService.getItemParamById(itemId);
 			return TaotaoResult.ok(result);

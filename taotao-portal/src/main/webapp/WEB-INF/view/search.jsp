@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,7 +45,15 @@
 <li class="item-book" bookid="11078102">
 	<div class="p-img">
 		<a target="_blank" href="/item/${item.id }.html">
-			<img width="160" height="160" data-img="1" data-lazyload="${item.image}"/>
+		<c:set var="img" value="${fn:split(item.image, ',')[0]}" />
+		<c:choose>
+			<c:when test="${img != '' || img !=null }">
+				 <img width="160" height="160" data-img="1" data-lazyload="${img}" />
+			</c:when> 
+			 <c:otherwise>  
+  				<img width="160" height="160" data-img="1" data-lazyload="1" />
+              </c:otherwise>  
+		</c:choose> 
 		</a>
 	</div>
 	<div class="p-name">

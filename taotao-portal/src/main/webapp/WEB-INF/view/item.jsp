@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -146,7 +147,8 @@
 		
 		<div id="preview">
 			<div id="spec-n1" class="jqzoom" clstag="shangpin|keycount|product|spec-n1">
-				<img data-img="1" width="350" height="350" src="${item.images[0]}" alt="${item.title}"  jqimg="${item.images[0]}"/>
+				<c:set var="img" value="${fn:split(item.image, ',')}" />
+				<img data-img="1" width="350" height="350" src="${img[0]}" alt="${item.title}"  jqimg="${img[0]}"/>
 			</div>
 					
 			<div id="spec-list" clstag="shangpin|keycount|product|spec-n5">
@@ -154,7 +156,7 @@
 				<a href="javascript:;" class="spec-control" id="spec-backward"></a>
 				<div class="spec-items">
 					<ul class="lh">   
-						<c:forEach items="${item.images}" var="pic" varStatus="status">  
+						<c:forEach items="${img}" var="pic" varStatus="status">  
 							<c:choose>
 								<c:when test="${status.index == 0 }">
 									<li>
