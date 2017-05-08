@@ -117,7 +117,7 @@
 	var REGISTER={
 		param:{
 			//单点登录系统的url
-			surl:""
+			surl:"http://localhost:9990"
 		},
 		inputcheck:function(){
 				//不能为空检查
@@ -182,7 +182,7 @@
 			});
 		},
 		login:function() {
-			 location.href = "/user/page/login";
+			 location.href = "/user/login";
 			 return false;
 		},
 		reg:function() {
