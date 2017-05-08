@@ -78,8 +78,9 @@
 				$.post("/user/login", $("#formlogin").serialize(),function(data){
 					if (data.status == 200) {
 						alert("登录成功！");
+						console.log(redirectUrl);
 						if (redirectUrl == "") {
-							location.href = "http://www.taotao.com";
+							location.href = "http://localhost:9997";
 						} else {
 							location.href = redirectUrl;
 						}
