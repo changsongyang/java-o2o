@@ -50,7 +50,6 @@ public class LoginInterceptor implements HandlerInterceptor{
 		getUrl(request);
 		//判断用户是否登录
 		if(StringUtils.isBlank(TOKEN)){
-			System.out.println("未登录");
 			//跳转登录页面,带入当前URL
 			response.sendRedirect(SSO_BASE_URL + SSO_LOGIN + "?redirect=" + getUrl(request));
 			return false;
@@ -58,12 +57,10 @@ public class LoginInterceptor implements HandlerInterceptor{
 			TbUser user = loginService.getUserByToken(TOKEN);
 			//判断TOKEN是否过期
 			if(null == user){
-				System.out.println("过期");
 				response.sendRedirect(SSO_BASE_URL + SSO_LOGIN + "?redirect=" + getUrl(request));
 				return false;
 			}
 		}
-		System.out.println("放行");
 		return true;
 	}
 	private String getUrl(HttpServletRequest request) {
@@ -72,9 +69,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 				+ request.getServerPort() 
 				+ request.getContextPath() 
 				+ request.getRequestURI(); 
-		String url2 = request.getRequestURL().toString();
-		System.out.println(url);
-		System.out.println(url2);
+		//String url2 = request.getRequestURL().toString();
+		//System.out.println(url);
+		//System.out.println(url2);
 		return url;
 	}
 }

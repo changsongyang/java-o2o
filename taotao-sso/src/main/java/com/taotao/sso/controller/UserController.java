@@ -33,7 +33,6 @@ public class UserController {
 
 	@RequestMapping("/pageLogin")
 	public String pageLogin(String redirect,Model model) {
-		System.out.println(redirect +"model");
 		model.addAttribute("redirect", redirect);
 		return "login";
 	}
