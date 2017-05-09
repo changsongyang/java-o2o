@@ -8,6 +8,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 配置包扫描器 -->
 	<context:component-scan base-package="com.taotao.portal.controller"></context:component-scan>
+	<context:property-placeholder location="classpath:properties/*.properties" />
 	<!-- 处理请求返回json字符串的中文乱码问题 -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -28,4 +29,12 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<!-- 拦截器配置 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截订单类请求 -->
+			<mvc:mapping path="/item/**"/>
+			<bean class="com.taotao.portal.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

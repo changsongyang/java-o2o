@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,9 @@ public class UserController {
 	TokenService tokenService;
 
 	@RequestMapping("/pageLogin")
-	public String pageLogin() {
+	public String pageLogin(String redirect,Model model) {
+		System.out.println(redirect +"model");
+		model.addAttribute("redirect", redirect);
 		return "login";
 	}
 
