@@ -57,4 +57,8 @@
 		<!-- 配置一个伪静态的url拦截形式 -->
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>taotao-portal</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
 </web-app>
