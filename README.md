@@ -14,6 +14,7 @@ parent(父工程)<br>
     |——dubbo-service(业务逻辑层)<br>
   |——dubbo-web(view层)<br>
   |——rest(webservice发布系统)<br>
+  |——order(订单系统)<br>
   |——portal(前台系统)<br>
   |——search(solr搜索系统)<br>
   |——sso(单点登录系统)<br>
