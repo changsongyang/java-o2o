@@ -1,5 +1,5 @@
 # java-ssm
-java 电商系统(开完完成) 
+java 电商系统(开发完成) 
 # maven 模块管理
 <pre>
 parent(父工程)<br>
