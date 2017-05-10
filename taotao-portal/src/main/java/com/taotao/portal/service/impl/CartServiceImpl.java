@@ -66,7 +66,9 @@ public class CartServiceImpl implements CartService {
 		try {
 			//从cookie里取商品信息
 			String json = CookieUtils.getCookieValue(request, "TT_CART", true);
-			
+			if(StringUtils.isBlank(json)){
+				return new ArrayList<TbItem>();
+			}
 			//将json转为java对象
 			List<TbItem> list = JsonUtils.jsonToList(json, TbItem.class);
 			return list;
