@@ -41,7 +41,7 @@ public class UserController {
 	public String register() {
 		return "register";
 	}
-
+	
 	@RequestMapping(value = "/check/{param}/{type}", method = RequestMethod.GET)
 	@ResponseBody
 	public Object checkInfo(@PathVariable String param, @PathVariable Integer type, String callback) {

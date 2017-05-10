@@ -27,13 +27,12 @@
 <div class="w w1 header clearfix">
     <div id="logo"><a href="/"><img src="/images/taotao-logo.gif" alt="淘淘商城"></a></div>
 </div>
-
 <form id="orderForm" class="hide" action="/order/create.html" method="post">
 		<input type="hidden" name="paymentType" value="1"/>
 		<c:forEach items="${cartList }" var="cart" varStatus="status">
 			<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
 			<input type="hidden" name="orderItems[${status.index}].itemId" value="${cart.id}"/>
-			<input type="hidden" name="orderItems[${status.index}].cartItemNum" value="${cart.num }"/>
+			<input type="hidden" name="orderItems[${status.index}].num" value="${cart.num}"/>
 			<input type="hidden" name="orderItems[${status.index}].price" value="${cart.price}"/>
 			<input type="hidden" name="orderItems[${status.index}].totalFee" value="${cart.price * cart.num}"/>
 			<input type="hidden" name="orderItems[${status.index}].title" value="${cart.title}"/>
@@ -41,8 +40,8 @@
 		</c:forEach>
 		<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
 		<input type="hidden" name="postFee" value="0"/>
-		<input type="hidden" name="orderShipping.receiverName" value="胡雷"/>
-		<input type="hidden" name="orderShipping.receiverMobile" value="15891588888"/>
+		<input type="hidden" name="orderShipping.receiverName" value="${user.username}"/>
+		<input type="hidden" name="orderShipping.receiverMobile" value="${user.phone}"/>
 		<input type="hidden" name="orderShipping.receiverState" value="上海"/>
 		<input type="hidden" name="orderShipping.receiverCity" value="上海"/>
 		<input type="hidden" name="orderShipping.receiverDistrict" value="徐家汇"/>
