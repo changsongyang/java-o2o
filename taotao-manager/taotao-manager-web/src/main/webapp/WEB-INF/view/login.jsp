@@ -4,6 +4,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理员登录</title>
+<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="css/taotao.css" />
+<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 </head>
 <body style="background-color: #F3F3F3">
     <div class="easyui-dialog" title="管理员登录" data-options="closable:false,draggable:false" style="width:400px;height:300px;padding:10px;">
@@ -19,7 +26,7 @@
 	            </div>
 	        </div>
 	        <div>
-	            <a id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:100px;height:32px;margin-left: 50px">登录</a>
+	            <button id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:100px;height:32px;margin-left: 50px">登录</button>
 	        </div>
        	</div>
     </div>
@@ -29,11 +36,39 @@
     		var username = $("[name=username]").val();
     		var password = $("[name=password]").val();
     		
-    		if(username!="admin" || password!="admin"){
-    			$.messager.alert('错误',"用户名密码不正确！");
+    		if(username=="" || password==""){
+    			$.messager.alert('错误',"用户名密码不能为空！");
     			return ;
     		}
-    		window.location.href="/rest/page/index";
+    		//开启遮罩
+
+    		$.messager.progress({ 
+    		    title: '登录', 
+    		    msg: 'Loading...', 
+    		    text: '登录中请稍后' 
+    		});
+
+    		$.ajax({  
+                type : "POST",
+                url : "/login/doLogin",//路径  
+                data : {  
+                	username:username,
+                	password:password
+                }, 
+                success : function(result) {
+                	console.log(result)
+                	if(result.status == 200){
+                		location.href="http://localhost:9999"
+                		//关闭遮罩
+                		$.messager.progress('close');
+                	}else{
+                		//关闭遮罩
+                		$.messager.progress('close');
+                	}
+                	
+                }  
+            });  
+    		
     	});
     </script>
 </body>
