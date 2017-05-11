@@ -51,4 +51,10 @@ public class OrderController {
 		return "success";
 	}
 	
+	@RequestMapping("/myOrderCart")
+	public String myOrderCart(){
+		return "my-orders";
+	}
+	
+
 }

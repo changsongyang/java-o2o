@@ -18,6 +18,8 @@ import com.taotao.po.TbItem;
 import com.taotao.po.TbItemDesc;
 import com.taotao.po.TbItemExample;
 import com.taotao.po.TbItemParamItem;
+import com.taotao.po.TbItemParamItemExample;
+import com.taotao.po.TbItemParamItemExample.Criteria;
 import com.taotao.service.ItemService;
 /**
  * 商品列表
@@ -104,6 +106,40 @@ public class ItemServiceImlp implements ItemService {
 		//添加商品规格
 		tbItemParamItemMapper.insert(tbItemParamItem);
 		
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult deleteItemId(Long id) {
+		tbItemMapper.deleteByPrimaryKey(id);
+		tbItemDescMapper.deleteByPrimaryKey(id);
+		TbItemParamItemExample example = new TbItemParamItemExample();
+		Criteria createCriteria = example.createCriteria();
+		createCriteria.andItemIdEqualTo(id);
+		tbItemParamItemMapper.deleteByExample(example );
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult reshelf(Long id) {
+		TbItem item = new TbItem();
+		item.setId(id);
+		// '商品状态，1-上价，2-下架
+		item.setStatus((byte)1);
+		//上架
+		tbItemMapper.updateByPrimaryKeySelective(item );
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult instock(Long id) {
+		//下架
+		TbItem item = new TbItem();
+		item.setId(id);
+		// '商品状态，1-上价，2-下架
+		item.setStatus((byte)2);
+		//上架
+		tbItemMapper.updateByPrimaryKeySelective(item );
 		return TaotaoResult.ok();
 	}
 
