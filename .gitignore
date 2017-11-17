@@ -4,3 +4,7 @@ RemoteSystemsTempFiles/
 .classpath
 .project
 .recommenders
+.idea/*
+.idea*
+\.idea*
+*.iml
